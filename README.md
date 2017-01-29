@@ -22,6 +22,10 @@ Or install it yourself as:
 
 TODO: Write usage instructions here
 
+## Prior art
+
+- [webpack-rails](https://github.com/mipearson/webpack-rails)
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/cljs-rails/fork )

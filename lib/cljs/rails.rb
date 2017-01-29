@@ -1,7 +1,3 @@
 require "cljs/rails/version"
+require 'cljs/railtie' if defined? ::Rails::Railtie
 
-module Cljs
-  module Rails
-    # Your code goes here...
-  end
-end

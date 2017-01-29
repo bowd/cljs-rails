@@ -1,0 +1,3 @@
+{:require  [<%= app_name %>.core]
+ :init-fns [<%= app_name %>.core/main]
+ :compiler-options {:asset-path "http://localhost:5555/main.out"}}
