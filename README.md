@@ -95,7 +95,7 @@ The relevent parts of ``app.json`` are:
 ```
 
 To deploy to Heroku your app needs:
-- ``BOOTBUILD_CMD`` env var that specifies the build command (``build prod`` in the default case)
+- ``BOOTBUILD_CMD`` env var that specifies the build command (``boot prod`` in the default case)
 - a [boot buildpack](https://github.com/taylorSando/heroku-buildpack-boot) next to the ruby one
 
 ##### Procfile
