@@ -62,29 +62,18 @@ After doing this you should navigate to an action and see clojurescript devtools
 Also, the generated core/main function injects "Hello world" into the document body. 
 You can go to ``cljs/src/<app-name>/core.cljs`` and edit the text there. It should automagically recompile and run again in the browser! Yey!
 
-## Notes
-
-### Structure
-
-The generator sets up a ``cljs`` folder with the source, a main and a namespace derived from the rails app name.
-
-```
-▾ cljs/
-  ▾ src/
-    ▾ <app-name>/
-        core.cljs
-      main.cljs.edn
-```
-
-> You can provide a different name as the first argument of the install generator.
-
-### Production
+## Production
 
 There's a rake tasks provided ``cljs:compile`` that builds for production (with advanced optimisations).
 It just runs ``boot #{production_task}``. Production task defaults to "prod" and is defined in the ``build.boot`` template, but you can configure it via ``config.cljs.production_build_task``.
 
 The production build is configured by default to output to ``app/assets/cljs-build/``. This means that the sprockets can now find it.
 The ``cljs_main_path`` helper will just return "main.js" when in production so sprokets will pickup the build file. In development/test it uses the dev-server settings.
+
+You should add the precompile path to ``production.rb``:
+```ruby
+config.assets.precompile += [ 'main.js' ]
+```
 
 > By default ``app/assets/cljs-build`` is added to gitignore just in case, but you might want to (due to some limitations in your environemnt, but you shouldn't) commit your build artefacts to the repo.
 
@@ -103,6 +92,23 @@ Now as long as there's a proper buildpack being used that has ``boot`` installed
 #### Custom deployment
 
 Same logic as above should apply as long as you attach the compile task to run before ``assets:precompile``, and the server that's managing your build has ``boot`` setup.
+
+
+## Notes
+
+### Structure
+
+The generator sets up a ``cljs`` folder with the source, a main and a namespace derived from the rails app name.
+
+```
+▾ cljs/
+  ▾ src/
+    ▾ <app-name>/
+        core.cljs
+      main.cljs.edn
+```
+
+> You can provide a different name as the first argument of the install generator.
 
 ## Prior art
 
