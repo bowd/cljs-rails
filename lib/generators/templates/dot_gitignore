@@ -9,4 +9,5 @@
 
 # Don't commit the build
 /cljs/target
+.nrepl-port
 
