@@ -21,8 +21,8 @@ describe 'cljs_main_path' do
 
   context "when in development" do
     before do
-      allow(Rails.env).to receive :production? { false }
-      allow(Rails.env).to receive :development? { true }
+      allow(Rails.env).to receive(:production?) { false }
+      allow(Rails.env).to receive(:development?) { true }
     end
 
     it "should have the user talk to the dev server" do
@@ -35,8 +35,8 @@ describe 'cljs_main_path' do
 
   context "when in prouction" do
     before do
-      allow(Rails.env).to receive :production? { true }
-      allow(Rails.env).to receive :development? { false }
+      allow(Rails.env).to receive(:production?) { true }
+      allow(Rails.env).to receive(:development?) { false }
     end
 
     it "should have the user talk to the dev server" do
