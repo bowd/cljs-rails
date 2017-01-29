@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bogdan-dumitru/cljs-rails.svg?branch=master)](https://travis-ci.org/bogdan-dumitru/cljs-rails) [![Gem Version](https://badge.fury.io/rb/cljs-rails.svg)](http://badge.fury.io/rb/cljs-rails)
+
 # cljs-rails
 
 **Join the functional bandwagon now in just a few easy steps!**
