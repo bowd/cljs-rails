@@ -77,6 +77,7 @@ config.assets.precompile += [ 'main.js' ]
 #### Deployment to Heroku
 
 > See the [sample-cljs-rails-app](https://github.com/bogdan-dumitru/sample-cljs-rails-app).
+
 > [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/bogdan-dumitru/sample-cljs-rails-app)
 
 The relevent parts of ``app.json`` are:
