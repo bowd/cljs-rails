@@ -56,6 +56,7 @@ Currently the bundle isn't loaded anywhere in your Rails app. you must add it to
 ```
 
 After doing this you should navigate to an action and see some clojurescript devtools messages in your browser console. 
+
 Also, the generated core/main function injects "Hello world" into the document body. 
 You can go to ``cljs/src/<app-name>/core.cljs`` and edit the text there. It should automagically recompile and run again in the browser! Yey!
 
