@@ -14,5 +14,5 @@
 *.a
 mkmf.log
 *.gem
-
+*.gemfile.lock
 
