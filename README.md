@@ -140,7 +140,7 @@ The generator sets up a ``cljs`` folder with the source, a main and a namespace 
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/cljs-rails/fork )
+1. Fork it ( https://github.com/bogdan-dumitru/cljs-rails/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
