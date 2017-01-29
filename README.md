@@ -37,7 +37,7 @@ Run the generator
   
     $ bundle exec rails generate cljs_rails:install <optional app-name, defaults to the rails app name>
 
-Bundle install again because the generator adds a new dependecy (foreman)
+Bundle install again because the generator adds a new dependency (foreman)
 
     $ bundle
 
