@@ -40,7 +40,8 @@ module CljsRails
       append_to_file ".gitignore" do
         <<-EOF.strip_heredoc
         # Added by cljs-rails
-        /cljs/target
+        /app/assets/cljs-build
+        .nrepl-port
         EOF
       end
     end
