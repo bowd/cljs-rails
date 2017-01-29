@@ -8,6 +8,6 @@
 /tmp
 
 # Don't commit the build
-/cljs/target
+/app/assets/cljs-build
 .nrepl-port
 

@@ -14,6 +14,7 @@ module Cljs
     config.cljs = ActiveSupport::OrderedOptions.new
     config.cljs.dev_server = ActiveSupport::OrderedOptions.new
 
+    config.cljs.production_build_task = "prod"
     config.cljs.dev_server.port = 5555
     config.cljs.dev_server.host = 'localhost'
     config.cljs.main_target = 'main'

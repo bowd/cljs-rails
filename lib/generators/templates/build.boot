@@ -26,3 +26,7 @@
         (reload :asset-host "http://localhost:5555" :on-jsload '<%= app_name %>.core/main)
         (cljs-repl)
         (cljs :source-map true :optimizations :none)))
+
+(deftask prod []
+  (comp (cljs :optimizations :advanced)
+        (target :dir #{"app/assets/cljs-build"})))

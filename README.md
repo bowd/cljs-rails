@@ -43,19 +43,19 @@ Bundle install again because the generator adds a new dependency (foreman)
 
 ## Post-Install
 
-Because the cljs build (powered by boot) needs to be run in parallel with the rails server we've installed ``foreman`` and added a basic ``Procfile`` that starts both these processes. So from now on instead of ``bundle exec rails server`` you should do:
+Because the cljs build (powered by boot) needs to be run in parallel with the rails server, ``foreman`` was added to the gemfile and a basic ``Procfile`` that starts both these processes. So from now on instead of ``bundle exec rails server`` you should do:
 
     $ foreman start
 
-> Because of the way clojure works conceptually the first time you start foreman (or run ``boot dev``) it will download all dependencies and also build your project. This is the equivalent, in webpack world, of doing both the ``npm install`` and ``webpack build``. Subsequent builds will not download depndencies and of course the dev tasks starts a watch that does hot-reloading and incremental builds (2k17).
+> Because of the way clojure works the first time you start foreman (or run ``boot dev``) it will download all dependencies and also build your project. This is the equivalent, in webpack world, of doing both the ``npm install`` and ``webpack build``. Subsequent builds will not download depndencies and of course the dev tasks starts a watch that does hot-reloading and incremental builds (2k17).
 
-Currently the bundle isn't loaded anywhere in your Rails app. you must add it to the head of your layout using the ``cljs_main_path`` helper:
+Currently the bundle isn't loaded anywhere in your Rails app, you must add it to your layout using the ``cljs_main_path`` helper:
 
 ```erb
 <%= javascript_include_tag cljs_main_path %>
 ```
 
-After doing this you should navigate to an action and see some clojurescript devtools messages in your browser console. 
+After doing this you should navigate to an action and see clojurescript devtools messages in your browser console. 
 
 Also, the generated core/main function injects "Hello world" into the document body. 
 You can go to ``cljs/src/<app-name>/core.cljs`` and edit the text there. It should automagically recompile and run again in the browser! Yey!
@@ -75,6 +75,32 @@ The generator sets up a ``cljs`` folder with the source, a main and a namespace 
 ```
 
 > You can provide a different name as the first argument of the install generator.
+
+### Production
+
+There's a rake tasks provided ``cljs:compile`` that builds for production (with advanced optimisations).
+It just runs ``boot #{production_task}``. Production task defaults to "prod" and is defined in the ``build.boot`` template, but you can configure it via ``config.cljs.production_build_task``.
+
+The production build is configured by default to output to ``app/assets/cljs-build/``. This means that the sprockets can now find it.
+The ``cljs_main_path`` helper will just return "main.js" when in production so sprokets will pickup the build file. In development/test it uses the dev-server settings.
+
+> By default ``app/assets/cljs-build`` is added to gitignore just in case, but you might want to (due to some limitations in your environemnt, but you shouldn't) commit your build artefacts to the repo.
+
+#### Deployment to heroku
+
+> WIP: Need to experiment with buildpacks and setup an example repo.
+
+You can enhance the ``assets:precompile`` task so that it runs ``cljs:compile``. Add this to a rake file:
+
+```ruby
+Rake::Task['assets:precompile'].enhance ['cljs:compile']
+```
+
+Now as long as there's a proper buildpack being used that has ``boot`` installed, everything should work.
+
+#### Custom deployment
+
+Same logic as above should apply as long as you attach the compile task to run before ``assets:precompile``, and the server that's managing your build has ``boot`` setup.
 
 ## Prior art
 
