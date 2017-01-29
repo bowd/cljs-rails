@@ -47,7 +47,7 @@ Because the cljs build (powered by boot) needs to be run in parallel with the ra
 
     $ foreman start
 
-> Because of the way clojure works conceptually the first time you start foreman (or run ``boot dev``) it will download all dependencies and also build your project. This is the equivalent, in webpack world, of doing both the ``npm install`` and ``webpack build``. Subsequent builds will not download dpendencies and of course the dev tasks starts a watch that does hot-reloading and incremental builds (2k17).
+> Because of the way clojure works conceptually the first time you start foreman (or run ``boot dev``) it will download all dependencies and also build your project. This is the equivalent, in webpack world, of doing both the ``npm install`` and ``webpack build``. Subsequent builds will not download depndencies and of course the dev tasks starts a watch that does hot-reloading and incremental builds (2k17).
 
 Currently the bundle isn't loaded anywhere in your Rails app. you must add it to the head of your layout using the ``cljs_main_path`` helper:
 
@@ -55,13 +55,15 @@ Currently the bundle isn't loaded anywhere in your Rails app. you must add it to
 <%= javascript_include_tag cljs_main_path %>
 ```
 
-After doing this you should navigate to an action and see some clojurescript devtools messages in your browser console. Also the generated main file injects "Hello world" into the document body. You can go to ``cljs/src/<app-name>/core.cljs`` and edit the text there. It should automagically recompile and run again in the browser! Yey!
+After doing this you should navigate to an action and see some clojurescript devtools messages in your browser console. 
+Also, the generated core/main function injects "Hello world" into the document body. 
+You can go to ``cljs/src/<app-name>/core.cljs`` and edit the text there. It should automagically recompile and run again in the browser! Yey!
 
 ## Notes
 
 ### Structure
 
-The generator sets up a ``cljs`` folder with the source, a main and a namespace dervied from the rails app name.
+The generator sets up a ``cljs`` folder with the source, a main and a namespace derived from the rails app name.
 
 ```
 ▾ cljs/
@@ -71,7 +73,7 @@ The generator sets up a ``cljs`` folder with the source, a main and a namespace 
       main.cljs.edn
 ```
 
-> You can provide a different name as the first argument of the install generator
+> You can provide a different name as the first argument of the install generator.
 
 ## Prior art
 
