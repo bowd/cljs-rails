@@ -1,6 +1,6 @@
 # Cljs::Rails
 
-TODO: Write a gem description
+Boot powered helpers to get up and running fast with Clojurescript in your Rails application
 
 ## Installation
 
