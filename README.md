@@ -64,9 +64,6 @@ You can go to ``cljs/src/<app-name>/core.cljs`` and edit the text there. It shou
 
 ## Production
 
-There's a rake tasks provided ``cljs:compile`` that builds for production (with advanced optimisations).
-It just runs ``boot #{production_task}``. Production task defaults to "prod" and is defined in the ``build.boot`` template, but you can configure it via ``config.cljs.production_build_task``.
-
 The production build is configured by default to output to ``app/assets/cljs-build/``. This means that the sprockets can now find it.
 The ``cljs_main_path`` helper will just return "main.js" when in production so sprokets will pickup the build file. In development/test it uses the dev-server settings.
 
@@ -77,19 +74,30 @@ config.assets.precompile += [ 'main.js' ]
 
 > By default ``app/assets/cljs-build`` is added to gitignore just in case, but you might want to (due to some limitations in your environemnt, but you shouldn't) commit your build artefacts to the repo.
 
-#### Deployment to heroku
+#### Deployment to Heroku
 
-> WIP: Need to experiment with buildpacks and setup an example repo.
+> See the [sample-cljs-rails-app](https://github.com/bogdan-dumitru/sample-cljs-rails-app).
+> [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/bogdan-dumitru/sample-cljs-rails-app)
 
-You can enhance the ``assets:precompile`` task so that it runs ``cljs:compile``. Add this to a rake file:
-
-```ruby
-Rake::Task['assets:precompile'].enhance ['cljs:compile']
+The relevent parts of ``app.json`` are:
+```json
+  "env": {
+    "BOOTBUILD_CMD": {
+      "description": "The command used by the boot buildback to compile cljs",
+      "value": "boot prod"
+    }
+  },
+  "buildpacks": [
+    { "url": "https://github.com/taylorSando/heroku-buildpack-boot" },
+    { "url": "https://github.com/heroku/heroku-buildpack-ruby" }
+  ]
 ```
 
-Now as long as there's a proper buildpack being used that has ``boot`` installed, everything should work.
+To deploy to Heroku your app needs:
+- ``BOOTBUILD_CMD`` env var that specifies the build command (``build prod`` in the default case)
+- a [boot buildpack](https://github.com/taylorSando/heroku-buildpack-boot) next to the ruby one
 
-###### Procfile
+##### Procfile
 
 Heroku also uses the Procfile in production to spin up your web/worker dynos. To avoid this clash you can create``Procfile.dev`` that contains the processes that need to run on development. Then you can either:
 
@@ -98,8 +106,16 @@ Heroku also uses the Procfile in production to spin up your web/worker dynos. To
 
 #### Custom deployment
 
-Same logic as above should apply as long as you attach the compile task to run before ``assets:precompile``, and the server that's managing your build has ``boot`` setup.
+There's a rake tasks provided ``cljs:compile`` that builds for production (with advanced optimisations).
+It just runs ``boot #{production_task}``. Production task defaults to "prod" and is defined in the ``build.boot`` template, but you can configure it via ``config.cljs.production_build_task``.
 
+You can enhance the ``assets:precompile`` task so that it runs ``cljs:compile`` every time. Add this to a rake file:
+
+```ruby
+Rake::Task['assets:precompile'].enhance ['cljs:compile']
+```
+
+Just make sure that the server that's precompiling your assets has ``boot`` setup.
 
 ## Notes
 
