@@ -89,6 +89,13 @@ Rake::Task['assets:precompile'].enhance ['cljs:compile']
 
 Now as long as there's a proper buildpack being used that has ``boot`` installed, everything should work.
 
+###### Procfile
+
+Heroku also uses the Procfile in production to spin up your web/worker dynos. To avoid this clash you can create``Procfile.dev`` that contains the processes that need to run on development. Then you can either:
+
+- (a) run ``foreman start -f Procfile.dev`` or
+- (b) create a ``.foreman`` file (that's .gitignored). and add ``procfile: Procfile.dev`` in it. You can then do ``foreman start`` as usual.
+
 #### Custom deployment
 
 Same logic as above should apply as long as you attach the compile task to run before ``assets:precompile``, and the server that's managing your build has ``boot`` setup.
