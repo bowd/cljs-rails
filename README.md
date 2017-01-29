@@ -9,13 +9,13 @@ If you're reading this you're either:
 - (a) sitting in lawnchair relaxed because you've [found happiness](https://www.youtube.com/watch?v=A0VaIKK2ijM)
 - (b) on your way to becoming fundamentally a better person
 
-**cljs-rails** wants to help you integrate clojurescript into an existing Rails application without too much hassle. It depends [boot](https://github.com/boot-clj/boot) on boot for building your assets and provide a minimal template to get up and running fast with that functional goodness. 
+**cljs-rails** wants to help you integrate clojurescript into an existing Rails application without too much hassle. It depends on [boot](https://github.com/boot-clj/boot) to compile your clojurescript and provides a minimal template to get up and running fast with that functional goodness. 
 
 ## Boot vs Leiningen
 
 > Potential for flamewar, check.
 
-I'm new to the clojurescript universe and after playing around a bit with the tools I found boot to provide a smoother startup experience, especially for people who are just getting started with the ecosystem. Granted the design choice diverges a bit from the *data all the way down* that we hold dear, their [arguments](https://news.ycombinator.com/item?id=8553189) seem to hold water.
+I'm new to the clojurescript universe and, after playing around a bit with the tools, I found boot to provide a smoother startup experience. Especially for people who are just getting started with the ecosystem. Granted the design choices diverge a bit from the *data all the way down* that we hold dear, their [arguments](https://news.ycombinator.com/item?id=8553189) seem to hold water.
 
 ## Installation
 
