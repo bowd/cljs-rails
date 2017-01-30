@@ -11,6 +11,8 @@ If you're reading this you're either:
 
 **cljs-rails** wants to help you integrate clojurescript into an existing Rails application without too much hassle. It depends on [boot](https://github.com/boot-clj/boot) to compile your clojurescript and provides a minimal template to get up and running fast with that functional goodness. 
 
+> My drive towards clojurescript was cristalized by [re-frame](https://github.com/Day8/re-frame). So I'm working on an updated version with a ``--reframe`` option that sets up a reframe scheleton, with potentially [db schemas](https://github.com/Day8/re-frame/blob/master/docs/ApplicationState.md#create-a-leveragable-schema) derived from the Rails models.
+
 ## Boot vs Leiningen
 
 > Potential for flamewar, check.
