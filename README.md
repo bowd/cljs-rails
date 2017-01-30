@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/bogdan-dumitru/cljs-rails.svg?branch=master)](https://travis-ci.org/bogdan-dumitru/cljs-rails) [![Gem Version](https://badge.fury.io/rb/cljs-rails.svg)](http://badge.fury.io/rb/cljs-rails) ![Gem Downloads](http://ruby-gem-downloads-badge.herokuapp.com/cljs-rails)
+[![Build Status](https://travis-ci.org/bogdan-dumitru/cljs-rails.svg?branch=master)](https://travis-ci.org/bogdan-dumitru/cljs-rails) [![Gem Version](https://badge.fury.io/rb/cljs-rails.svg)](http://badge.fury.io/rb/cljs-rails) [![Gem Downloads](https://img.shields.io/gem/dtv/cljs-rails.svg)](https://rubygems.org/gems/cljs-rails)
 
 # ![logo](http://i.imgur.com/jUig9Ck.png) cljs-rails
 
